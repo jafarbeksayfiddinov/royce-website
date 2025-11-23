@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Clean white background */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    /* Elevated surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Bright gold primary */
+    --primary: 39 94% 57%;
+    --primary-foreground: 60 2% 11%;
+    --primary-dark: 39 80% 47%;
+
+    /* Light gold secondary */
+    --secondary: 39 77% 77%;
+    --secondary-foreground: 60 2% 11%;
+
+    --muted: 39 77% 90%;
+    --muted-foreground: 0 0% 30%;
+
+    /* Blue accent */
+    --accent: 233 97% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 39 77% 85%;
+    --input: 39 77% 85%;
+    --ring: 39 94% 57%;
+
+    --radius: 0.75rem;
+
+    /* Custom palette colors */
+    --gold-light: 39 77% 77%;
+    --gold-bright: 39 94% 57%;
+    --charcoal: 60 2% 11%;
+    --blue-accent: 233 97% 56%;
+    
+    /* Premium gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(39 94% 57%) 0%, hsl(39 80% 47%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(39 77% 95%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.85) 0%, hsl(60 2% 11% / 0.90) 100%);
+    --gradient-gold-shine: linear-gradient(90deg, hsl(39 94% 57%), hsl(39 100% 70%), hsl(39 94% 57%));
+
+    /* Elegant shadows */
+    --shadow-soft: 0 2px 12px hsl(39 94% 57% / 0.08);
+    --shadow-medium: 0 4px 20px hsl(39 94% 57% / 0.12);
+    --shadow-large: 0 8px 40px hsl(39 94% 57% / 0.18);
+    --shadow-luxury: 0 10px 50px hsl(39 80% 47% / 0.25);
+    
+    /* Smooth animations */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark charcoal background */
+    --background: 60 2% 11%;
+    --foreground: 39 77% 85%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 39 77% 85%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 39 77% 85%;
+
+    /* Bright gold primary */
+    --primary: 39 94% 57%;
+    --primary-foreground: 60 2% 11%;
+    --primary-dark: 39 94% 47%;
+
+    /* Muted gold secondary */
+    --secondary: 39 50% 30%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 60 2% 18%;
+    --muted-foreground: 39 40% 65%;
+
+    /* Blue accent */
+    --accent: 233 97% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 60 2% 22%;
+    --input: 60 2% 18%;
+    --ring: 39 94% 57%;
+
+    --charcoal: 60 2% 11%;
+    
+    --gradient-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.85) 0%, hsl(60 2% 11% / 0.90) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(39 94% 57%) 0%, hsl(39 80% 47%) 100%);
+    --gradient-gold-shine: linear-gradient(90deg, hsl(39 94% 57%), hsl(39 100% 70%), hsl(39 94% 57%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  a, button, input, select, textarea, [role="button"] {
+    @apply transition-smooth;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-right {
+    animation: slide-right 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+    background-size: 200% auto;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes slide-right {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(20px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  .gradient-gold-shine {
+    background: var(--gradient-gold-shine);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
+  .shadow-luxury {
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-slow {
+    transition: var(--transition-slow);
+  }
+
+  .text-luxury {
+    background: var(--gradient-gold-shine);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
